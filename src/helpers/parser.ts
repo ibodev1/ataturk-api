@@ -16,12 +16,12 @@ function parseQuote(quote: string, id: number): Quote | null {
         match = regex.exec(quote);
     }
 
-    const detailMatch = quote.match(/\((.*?)\)/);
+    const detailMatch = quote.match(/\((.*?)\)$/);
     const detail = detailMatch ? detailMatch[1] : undefined;
 
     const parsedQuote = {
         id,
-        quote: quote.replace(/\((\d+)\)|\[(\d+)\]/g, "").trim(),
+        quote: quote.replace(/\((.*?)\)$|\[(.*?)\]/g, "").trim(),
         source_ids: source_ids.length > 0 ? source_ids : undefined,
         detail
     };
