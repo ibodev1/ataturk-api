@@ -21,7 +21,7 @@ function parseQuote(quote: string, id: number): Quote | null {
 
     const parsedQuote = {
         id,
-        quote: quote.replace(regex, "").trim(),
+        quote: quote.replace(/\((\d+)\)|\[(\d+)\]/g, "").trim(),
         source_ids: source_ids.length > 0 ? source_ids : undefined,
         detail
     };
