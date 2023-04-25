@@ -52,11 +52,15 @@
 | :-------- | :------- | :-------------------------------- |
 | `ids`      | `string[]` | **Gerekli**. Çağrılacak öğenin anahtar değeri |
 
-Örnek Url : [https://ataturk.deno.dev/sources/30,49](https://ataturk.deno.dev/sources/30,49)
+Örnek Url : [https://ataturk.deno.dev/sources/20,21](https://ataturk.deno.dev/sources/20,21)
+
+#### Verileri daha düzgün görmek için url nin sonuna `?pretty` ekleyebilirsiniz.
+
+Örnek Url : [https://ataturk.deno.dev/sources/20,21?pretty](https://ataturk.deno.dev/sources/20,21?pretty)
 
   
 ## Lisans
 
-[MIT](https://choosealicense.com/licenses/mit/) - ibodev1
+[MIT](https://choosealicense.com/licenses/mit/) - [ibodev1](https://github.com/ibodev1)
 
   
