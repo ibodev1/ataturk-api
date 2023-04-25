@@ -1,11 +1,5 @@
 import { DOMParser, Element } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts";
-
-
-interface SourceData {
-    id: number | undefined;
-    source: string;
-    url: string | undefined;
-}
+import { Source } from "../types/index.ts"
 
 const safeText = (str: string) => {
     return str.replace(/↑/g, "").trim();
@@ -17,7 +11,7 @@ function parseUrl(htmlString: string): string | undefined {
     return match ? match[1] : undefined;
 }
 
-const respondSource = (li: Element, id: number): SourceData => {
+const respondSource = (li: Element, id: number): Source => {
     const source = safeText(li.textContent);
     const url = parseUrl(li.outerHTML);
     return {
@@ -44,7 +38,7 @@ const respondSource = (li: Element, id: number): SourceData => {
         const document = new DOMParser().parseFromString(htmlString, "text/html",);
         const sourcesParent = document && document.querySelector("#mw-content-text > div.mw-parser-output > div.reflist > div > ol");
         if (sourcesParent?.children) {
-            const sources: SourceData[] = [];
+            const sources: Source[] = [];
             let i = 1;
             for (const li of sourcesParent?.children) {
                 sources.push(respondSource(li, i++));

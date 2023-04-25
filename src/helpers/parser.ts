@@ -1,12 +1,7 @@
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts";
+import { Quote } from "../types/index.ts"
 
-interface TextData {
-    quote: string;
-    source_ids: string[] | undefined;
-    detail: string | undefined;
-}
-
-function parseQuote(quote: string, id: number): TextData | null {
+function parseQuote(quote: string, id: number): Quote | null {
     const regex = /\[(\d+)\]/g;
     let match = regex.exec(quote);
     const source_ids = [];
