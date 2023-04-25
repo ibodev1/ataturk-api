@@ -35,7 +35,7 @@ const respondSource = (li: Element, id: number): Source => {
         const htmlBuffer = await response.arrayBuffer();
         const htmlDecoder = new TextDecoder("utf-8");
         const htmlString = htmlDecoder.decode(htmlBuffer);
-        const document = new DOMParser().parseFromString(htmlString, "text/html",);
+        const document = new DOMParser().parseFromString(htmlString, "text/html");
         const sourcesParent = document && document.querySelector("#mw-content-text > div.mw-parser-output > div.reflist > div > ol");
         if (sourcesParent?.children) {
             const sources: Source[] = [];

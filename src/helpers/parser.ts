@@ -44,7 +44,7 @@ function parseQuote(quote: string, id: number): Quote | null {
         const htmlBuffer = await response.arrayBuffer();
         const htmlDecoder = new TextDecoder("utf-8");
         const htmlString = htmlDecoder.decode(htmlBuffer);
-        const document = new DOMParser().parseFromString(htmlString, "text/html",);
+        const document = new DOMParser().parseFromString(htmlString, "text/html");
         const quotesParent = document && document.querySelector("#mw-content-text > div.mw-parser-output");
         const quotes: string[] = [];
         quotesParent?.childNodes.forEach((quoteNode) => {
