@@ -2,7 +2,7 @@
   "lock": false,
   "tasks": {
     "dev": "deno run --allow-env --allow-net --watch main.ts",
-    "parse": "deno run -A ./src/utils/parser.ts",
-    "source_parse": "deno run -A ./src/utils/source_parser.ts"
+    "parse": "deno run -A ./src/helpers/parser.ts",
+    "source_parse": "deno run -A ./src/helpers/source_parser.ts"
   }
 }
