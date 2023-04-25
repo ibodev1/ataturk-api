@@ -1,5 +1,6 @@
-import { DOMParser, Element } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts";
+import type { Element } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts";
 import { Source } from "../types/index.ts"
+import getDocument from '../utils/document.ts';
 
 const safeText = (str: string) => {
     return str.replace(/↑/g, "").trim();
@@ -23,19 +24,7 @@ const respondSource = (li: Element, id: number): Source => {
 
 (async () => {
     try {
-        const fetchHeaders = new Headers();
-        const fetchUrl = new URL("https://tr.wikiquote.org/wiki/Mustafa_Kemal_Atat%C3%BCrk");
-        fetchHeaders.append("Content-Type", "text/html; charset=UTF-8");
-        const response = await fetch(
-            fetchUrl,
-            {
-                headers: fetchHeaders
-            }
-        );
-        const htmlBuffer = await response.arrayBuffer();
-        const htmlDecoder = new TextDecoder("utf-8");
-        const htmlString = htmlDecoder.decode(htmlBuffer);
-        const document = new DOMParser().parseFromString(htmlString, "text/html");
+        const document = await getDocument();
         const sourcesParent = document && document.querySelector("#mw-content-text > div.mw-parser-output > div.reflist > div > ol");
         if (sourcesParent?.children) {
             const sources: Source[] = [];
